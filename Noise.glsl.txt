@@ -1,0 +1,36 @@
+
+
+float rand()
+{
+    return fract(sin(x) * 100000.0);
+}
+
+void tests()
+{
+    vec2 st = ((gl_FragCoord.xy / u_resolution) * 0.5) - u_resolution.y;
+    y = rand(st.x);
+    y = sqrt(rand(x));
+    y = poq(rand(x), 5.0);
+}
+
+void noise_mimic()
+{
+    vec2 st = ((gl_FragCoord.xy / u_resolution) * 0.5) - u_resolution.y;
+    float i = floor(st.x); //  get integer
+    float f = fract(st.x);  // get float
+    y = rand(i);
+
+    //  This interpolates each random value linearly
+    //  It interpolates between the current interger point and the next one.
+    //y = mix(rand(i), rand(i + 1.0), f);
+
+    //  Smoothstep creates smooth interpolation between these random points.
+    //  This is the basis of Noise.
+    
+    //  This interpolates through each one subically using smoothstep.
+    //y = mix(rand(i), rand(i + 1.0), smoothstep(0.0, 1.0, f));
+
+    //  Here is a custom cubic curve like smoothstep
+    //float u = f * f * (3.0 - 2.0 * f)
+    y = mix(random(i), random(i + 1.0), u);
+}
