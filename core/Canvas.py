@@ -39,13 +39,14 @@ class Canvas:
 
         self.surface = pg.Surface(self.dimensions)
         self.scene: Scene = Scene(self)
+        self.clear_color = (0.0, 0.0, 0.0)
     
     def release_memory(self):
         self.vao_manager.destroy_all()
     
     def render(self):
         # self.ctx_ref.screen.use()
-        self.ctx_ref.clear()
+        self.ctx_ref.clear(color = self.clear_color)
         self.scene.render()
 
         if self.designer_ref.engine_ref.GL_MODE:

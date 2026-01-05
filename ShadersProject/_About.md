@@ -2,7 +2,7 @@
 
 #   Aim
 
-This Sandbox is a library of creating shader art done following the "The Book of Shaders" at thebookofshaders.com using the DejiArts
+This Sandbox is a library of creating shader art done following the "The Book of Shaders" at https://thebookofshaders.com using the DejiArts
 
 #  Comments and Updates
 

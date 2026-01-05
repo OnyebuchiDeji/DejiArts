@@ -96,7 +96,7 @@ class ShaderEngine():
     def get_vao(self):
         vao = self.ctx.vertex_array(self.shader_program, [(self.vbo, '2f',
                                                            *['vertexPosition'])])
-        return vao    
+        return vao
     
 
 class Designer:

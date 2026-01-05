@@ -5,7 +5,7 @@ out vec4 fragColor;
 
 in vec2 textureCoord;
 
-uniform sampler2D textureVar1;
+uniform sampler2D CircleField;
 uniform float uTime;
 
 void main()

@@ -43,7 +43,7 @@ class VertexBufferObjectsManager:
 
     def destroy_these(self, *modelNames):
         """Destroy the Buffer Objects of the listed module names"""
-        [self.vertex_buffer_objects.pop(modelName) for modelName in modelNames]
+        [self.vertex_buffer_objects.pop(modelName).destroy() for modelName in modelNames]
     
 
 class BaseVertexBufferObject:

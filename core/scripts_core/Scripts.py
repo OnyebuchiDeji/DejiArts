@@ -20,6 +20,9 @@ class Script:
         A Script has a name/title, a brief description of what it does,
         the reference to the canvas, and several methods that contain
         the code to produce a desired art.
+
+        Any method can be appended to the `excluded` list. These methods hence run once. In it you can specify anythin that
+        you want done that cannot be done in the __init__ method due to semantic reasons.
     """
     excluded_methods = ['__init__', 'run_all']
     canvas_ref = None
@@ -33,6 +36,7 @@ class Script:
         """
             This looks at every method defined here
             and calls it, effectively rendering whatever is in them.
+            The methods it calls must not have any parameters or take any argument besides self
 
             How it works:
                 For every attribute in this Class's instance...

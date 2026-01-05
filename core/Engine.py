@@ -20,7 +20,8 @@ class Engine:
         self.ctx = mgl.create_context() if self.GL_MODE else None
 
         self.ctx.enable(flags= mgl.DEPTH_TEST | mgl.CULL_FACE | mgl.BLEND)
-        
+        # self.ctx.blend_equation = mgl.FUNC_ADD
+
         #   Mouse Settings
         # pg.event.set_grab(True)
         # pg.mouse.set_visible(False)
@@ -37,15 +38,21 @@ class Engine:
         self.fps = 60
         self.designer = Designer(self)
 
+    def get_pressed_key(self, keyTarget):
+        pressed_key = pg.key.get_pressed()
+        if pressed_key[keyTarget]:
+            return True
+        return False
 
-
+    def engine_quit(self):
+        self.designer.release_memory()
+        pg.quit()
+        sys.exit()
+    
     def check_events(self):
         for e in pg.event.get():
             if e.type == pg.QUIT or (e.type==pg.KEYDOWN and e.key==pg.K_ESCAPE):
-                self.designer.release_memory()
-                pg.quit()
-                sys.exit()
-
+                self.engine_quit()
 
     def render(self):
         self.designer.render()
@@ -75,7 +82,6 @@ class Engine:
         while True:
             self.get_current_time()
             self.check_events()
-            # self.camera.update()
             self.render()
             self.delta_time = self.clock.tick(self.fps)
             pg.display.set_caption(str(self.clock.get_fps()))
