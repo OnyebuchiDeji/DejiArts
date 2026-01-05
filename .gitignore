@@ -1,5 +1,5 @@
 .*
-.venv/*
-__.
+.venv/
+__pycache__
 !__init__.py
 !.gitignore
